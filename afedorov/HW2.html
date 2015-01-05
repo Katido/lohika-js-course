@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Homework#2</title>
+    <script type="text/javascript">
+        var MyApp = MyApp || {};
+        MyApp.FirstModule = (function () {
+            var privateDate = new Date(),
+                    calculateAge = function (el) {
+                        var ageDifMs = Date.now() - privateDate.getTime();
+                        var ageDate = new Date(ageDifMs);
+                        return Math.abs(ageDate.getUTCFullYear() - 1970);
+                    },
+                    set = function (el) {
+                        privateDate = new Date(el);
+                    },
+                    get = function () {
+                        return calculateAge(privateDate);
+                    };
+            return {
+                setDateOfBirth: set,
+                getAge: get
+            }
+
+        }()
+        );
+        MyApp.SecondMoule = (function () {
+            var privateState = 0;
+
+            var incrementCount = function () {
+                privateState += 1;
+                log();
+            };
+
+            var decrementCount = function () {
+                privateState -= 1;
+                log();
+            };
+
+            var log = function(){
+                console.log("Current state is:"+privateState);
+            };
+
+            return {
+                incrementCount: incrementCount,
+                decrementCount: decrementCount
+            }
+
+        }()
+        );
+    </script>
+</head>
+<body>
+
+</body>
+</html>
