@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <script type="text/javascript">
+        var calculator = {
+            firstOperand: 0,
+            secondOperand: 0,
+
+            add: function () {
+                return this.firstOperand + this.secondOperand;
+            },
+            minus: function () {
+                return this.firstOperand - this.secondOperand;
+            },
+            multiply: function () {
+                return this.firstOperand * this.secondOperand;
+            },
+            div: function () {
+                return this.firstOperand / this.secondOperand;
+            }
+        }
+
+        function calculate() {
+
+            calculator.firstOperand = +document.getElementById("firstOper").value;
+            calculator.secondOperand = +document.getElementById("secondOper").value;
+            var select = document.getElementById("operation");
+            var operation = select.options[select.selectedIndex].value;
+            var result;
+            switch (operation) {
+                case '+':
+                    result = calculator.add();
+                    break;
+                case '-':
+                    result = calculator.minus();
+                    break;
+                case '*':
+                    result = calculator.multiply();
+                    break;
+                case '/':
+                    result = calculator.div();
+                    break;
+                default:
+                    break;
+            }
+            document.getElementById("result").innerHTML = "= " + result;
+        }
+
+    </script>
+    <title>Homework#1</title>
+</head>
+<body>
+
+<input type="text" id="firstOper">
+
+<select name="operation" id="operation">
+    <option value="+">+</option>
+    <option value="-">-</option>
+    <option value="*">*</option>
+    <option value="/">/</option>
+</select>
+
+<input type="text" id="secondOper">
+
+<label id="result">= ?</label><br><br>
+
+<input type="submit" value="Calculate" onclick="calculate();">
+<br>
+
+
+</body>
+</html>
