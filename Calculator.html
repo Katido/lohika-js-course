@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Kalkulator</title>
+    <script language="javascript" type="text/javascript">
+        var calc = {
+            result: function (){
+                v1 = Number(document.calculation.inputValue1.value)
+                v2 = Number(document.calculation.inputValue2.value)
+                oprtr = document.calculation.operator.value
+            if (oprtr == '*') {
+                document.calculation.output.value=v1*v2;
+                return
+            } else if (oprtr == '/') {
+                document.calculation.output.value=v1/v2;
+                return
+            } else if (oprtr == '+') {
+                document.calculation.output.value=v1+v2;
+                return
+            } else if (oprtr == '-') {
+                document.calculation.output.value=v1-v2;
+                return
+            } else {
+                document.calculation.output.value='unsupported operation';
+                return
+            }
+        }
+    }
+    </script>
+</head>
+<body>
+<form name="calculation">
+
+    Parameter1: <input type="text" name="inputValue1">
+    Parameter2: <input type="text" name="inputValue2">
+    Operator: <input type="text" name="operator">
+    Result: <input type="text" name="output">
+
+    <input type="button" value="NOW SHOW ME THE RESULT" onclick="calc.result();">
+
+</form>
+</body>
+</html>
