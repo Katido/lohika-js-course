@@ -5,31 +5,83 @@
 	<script type="text/javascript"
 			src="../js/calculator.js"></script>
 	<script type="text/javascript"
-			src="../../lib/jquery-2.1.1.js"></script>
+			src="../../lib/js/jquery-2.1.1.js"></script>
+	<link rel="stylesheet"
+		  href="../../lib/css/bootstrap.css">
+	<link rel="stylesheet"
+		  href="../css/calculator.css">
 	<title>Calculator</title>
 </head>
 <body>
-<form id="calculator">
-	<input type="text"
-		   id="number-one"
-		   maxlength="10"/>
-	<br>
-	<input type="text"
-			id="number-two"
-			maxlength="10"/>
-	<br>
-	<input type="button"
-		   id="add"
-		   value="+"/>
-	<input type="button"
-		   id="sub"
-		   value="-"/>
-	<input type="button"
-		   id="mul"
-		   value="x"/>
-	<input type="button"
-			id="div"
-			value="/"/>
-</form>
+<div class="container-fluid">
+	<form id="calculator"
+		  class="form-inline">
+		<div class="row">
+			<div class="col-xs-4 calculator-offset">
+				<label for="number-one">number one</label>
+				<input id="number-one"
+					   class="form-control"
+					   type="text"
+					   value="0"
+					   maxlength="10"/>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-4 calculator-offset">
+				<label for="number-two">number two</label>
+				<input id="number-two"
+					   class="form-control"
+					   type="text"
+					   value="0"
+					   maxlength="10"/>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-4">
+				<div class="row">
+					<div class="col-xs-1 calculator-offset">
+						<button id="add"
+								class="btn btn-primary btn-sm"
+								type="button">
+							+
+						</button>
+					</div>
+					<div class="col-xs-1 calculator-offset">
+						<button id="sub"
+								class="btn btn-primary btn-sm"
+								type="button">
+							-
+						</button>
+					</div>
+					<div class="col-xs-1 calculator-offset">
+						<button id="mul"
+								class="btn btn-primary btn-sm"
+								type="button">
+							x
+						</button>
+					</div>
+					<div class="col-xs-1 calculator-offset">
+						<button id="div"
+								class="btn btn-primary btn-sm"
+								type="button">
+							/
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-4 calculator-offset">
+				<label for="result">result</label>
+				<input id="result"
+					   type="text"
+					   class="form-control"
+					   value="0"
+					   readonly
+					   maxlength="10"/>
+			</div>
+		</div>
+	</form>
+</div>
 </body>
 </html>
