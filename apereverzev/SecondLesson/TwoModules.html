@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>JS Second Homework</title>
+    <script type="text/javascript">
+        var MyApp = MyApp || {};
+         MyApp.CountModule = (function () {
+            var counter = 0;
+            return {
+                incrementCounter: function () {
+                    return ++counter;
+                },
+                resetCounter: function () {
+                    console.log( "counter value prior to reset: " + counter );
+                    counter = 0;
+                }
+            };
+        })();
+
+        MyApp.Person = (function () {
+            //Private fields 
+            var name = 'Unknown';
+            var age = 0;
+            var fn = MyApp.CountModule.incrementCounter();
+
+            function setName(nameToSet) {
+                name=nameToSet;
+            };
+
+            function getName() {
+                return name;
+            };
+
+            function setAge(ageToSet) {
+                age=ageToSet;
+            };
+
+            function getAge() {
+                return age;
+            };
+
+            function showNumber() {
+                console.log("Person number is: "+ fn);
+            };
+            
+            return {
+                setName: setName,
+                getName: getName,
+                setAge: setAge,
+                getAge: getAge,
+                showNumber: showNumber
+            }
+        }());
+
+       
+
+
+    </script>
+</head>
+<body>
+<script type="text/javascript">
+    MyApp.Person.setName('Kate');
+    MyApp.Person.setAge(15);
+    MyApp.Person.showNumber();
+</script>
+</body>
+</html>
