@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Application of two modules</title>
+    <script language="javascript" type="text/javascript">
+        var module1 = (function () {
+            var myModule1 = {}, internalVar = "ModuleOneInternal";
+
+            function internalMtd(inputString) {
+                return inputString + " handled by internal method in module1"
+            }
+
+            myModule1.extProp = 1;
+            myModule1.extMtd1 = function () {
+                document.modules.output.value=internalVar;
+            };
+            myModule1.extMtd2 = function () {
+                document.modules.output.value=internalMtd(internalVar);
+            };
+            return myModule1;
+        }());
+
+        var module2 = (function () {
+            var myModule2 = {}, internalVar = "ModuleTwoInternal";
+
+            function internalMtd(inputString) {
+                return inputString + " handled by internal method in module1"
+            }
+            myModule2.extProp = 1 + module1.extProp;
+            myModule2.extMtd = function () {
+                document.modules.output.value=this.extProp;
+            };
+
+            return myModule2;
+        }());
+
+    </script>
+</head>
+<body>
+<form name="modules">
+
+    Result: <input type="text" name="output" style="width: 500px;">
+
+    <input type="button" value="RESULT1" onclick="module1.extMtd1();">
+    <input type="button" value="RESULT2" onclick="module1.extMtd2();">
+    <input type="button" value="RESULT3" onclick="module2.extMtd();">
+
+</form>
+</body>
+</html>
