@@ -41,44 +41,40 @@ var calculator = new Calculator();
 
 function initializeListeners() {
 
-	var digits = {
-		"one":1,
-		"two":2,
-		"three":3,
-		"four":4,
-		"five":5,
-		"six":6,
-		"seven":7,
-		"eight":8,
-		"nine":9,
-		"zero":0
-	};
-
-	var putNumber = function( number, element ) {
+	function putNumber( number, element ) {
 		var valueAttribute = element.getAttribute( "value" );
-		numberOneElement.setAttribute( "value", valueAttribute + number );
+		console.log( "Value attribute => ", valueAttribute, " number => ", number );
+		if( valueAttribute ) {
+			element.setAttribute( "value", valueAttribute + number );
+		}
+		else {
+			element.setAttribute( "value", number );
+		}
 	}
 
-	var numberOneElement = window.document.getElementById("number-one");
-	var numberTwoElement = window.document.getElementById("number-two");
-
-	function getProperFunc( digit, element ) {
-		var localDigit = digit;
-		var localElement = element;
-		var procFunc = function() {
-				return putNumber( localDigit, localElement )
-			};
-		return procFunc;
-	};
-
-	for (var key in digits) {
-		console.log( "key ", key );
-		var digit = digits[key];
-		var elementNO = window.document.getElementById( key + "-no" );
-		elementNO.addEventListener( "click", getProperFunc( digit, numberOneElement ) );
-		var elementNT = document.getElementById( key + "-nt" );
-		elementNT.addEventListener( "click", getProperFunc( digit, numberTwoElement ) );
+	function setListenersOnDigitsButton( digitsBlockName, textElement ) {
+		var buttons = document.getElementById( digitsBlockName ).getElementsByTagName( "button" );
+		var element = textElement;
+		for( var i = buttons.length - 1; i > -1; i-- ) {
+			var button = buttons[i];
+			console.log( "button => ", button );
+			console.log( "button value => ", button.getAttribute( "value" ) );
+			button.addEventListener(
+					"click", 
+					function() {
+						putNumber( this.getAttribute( "value" ), element );
+					}
+			);
+		}
 	}
+
+	var numberOneElement = document.getElementById( "number-one" );
+	var numberTwoElement = document.getElementById( "number-two" );
+	
+	setListenersOnDigitsButton( "box-one", numberOneElement );
+	setListenersOnDigitsButton( "box-two", numberTwoElement );
+
+	var resultElement = document.getElementById( "result" );
 
 	document.getElementById( "add" ).addEventListener(
 			"click",
@@ -87,7 +83,6 @@ function initializeListeners() {
 				var numberOne = numberOneElement.getAttribute( "value" );
 				var numberTwo = numberTwoElement.getAttribute( "value" );
 				var result = calculator.add( numberOne, numberTwo );
-				var resultElement = window.document.getElementById( "result" );
 				resultElement.setAttribute( "value", result );
 			}
 	);
@@ -99,7 +94,6 @@ function initializeListeners() {
 				var numberOne = numberOneElement.getAttribute( "value" );
 				var numberTwo = numberTwoElement.getAttribute( "value" );
 				var result = calculator.sub( numberOne, numberTwo );
-				var resultElement = window.document.getElementById( "result" );
 				resultElement.setAttribute( "value", result );
 			}
 	);
@@ -111,7 +105,6 @@ function initializeListeners() {
 				var numberOne = numberOneElement.getAttribute( "value" );
 				var numberTwo = numberTwoElement.getAttribute( "value" );
 				var result = calculator.mul( numberOne, numberTwo );
-				var resultElement = window.document.getElementById( "result" );
 				resultElement.setAttribute( "value", result );
 			}
 	);
@@ -123,10 +116,18 @@ function initializeListeners() {
 				var numberOne = numberOneElement.getAttribute( "value" );
 				var numberTwo = numberTwoElement.getAttribute( "value" );
 				var result = calculator.div( numberOne, numberTwo );
-				var resultElement = window.document.getElementById( "result" );
 				resultElement.setAttribute( "value", result );
 			}
 	);
-};
+	
+	document.getElementById( "reset" ).addEventListener(
+			"click",
+			function() {
+				numberOneElement.setAttribute( "value", "" );
+				numberTwoElement.setAttribute( "value", "" );
+				resultElement.setAttribute( "value", "0" );
+			}
+	);
+}
 
 initializeListeners();

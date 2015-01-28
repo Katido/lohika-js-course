@@ -19,6 +19,7 @@
 				<input id="number-one"
 					   class="form-control"
 					   type="text"
+					   readonly
 					   maxlength="10"/>
 			</div>
 			<div class="col-xs-2 calculator-offset">
@@ -26,6 +27,7 @@
 				<input id="number-two"
 					   class="form-control"
 					   type="text"
+					   readonly
 					   maxlength="10"/>
 			</div>
 			<div class="col-xs-3 calculator-offset">
@@ -61,6 +63,13 @@
 									/
 								</button>
 							</div>
+							<div class="col-xs-1 calculation-offset">
+								<button id="reset"
+										class="btn btn-primary btn-sm"
+										type="button">
+									C
+								</button>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -76,128 +85,144 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="row">
-				<div class="col-xs-2">
-					<button id="one-no"
-							class="btn btn-primary btn-sm calculator-offset"
-							type="button">
-						1
-					</button>
-					<button id="two-no"
-							class="btn btn-primary btn-sm calculator-offset"
-							type="button">
-						2
-					</button>
-					<button id="three-no"
-							class="btn btn-primary btn-sm calculator-offset"
-							type="button">
-						3
-					</button>
-				</div>
-				<div class="col-xs-2">
-					<button id="one-nt"
-							class="btn btn-primary btn-sm calculator-offset"
-							type="button">
-						1
-					</button>
-					<button id="two-nt"
-							class="btn btn-primary btn-sm calculator-offset"
-							type="button">
-						2
-					</button>
-					<button id="three-nt"
-							class="btn btn-primary btn-sm calculator-offset"
-							type="button">
-						3
-					</button>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-xs-2">
-					<button id="four-no"
-							class="btn btn-primary btn-sm calculator-offset"
-							type="button">
-						4
-					</button>
-					<button id="five-no"
-							class="btn btn-primary btn-sm calculator-offset"
-							type="button">
-						5
-					</button>
-					<button id="six-no"
-							class="btn btn-primary btn-sm calculator-offset"
-							type="button">
-						6
-					</button>
-				</div>
-				<div class="col-xs-2">
-					<button id="four-nt"
-							class="btn btn-primary btn-sm calculator-offset"
-							type="button">
-						4
-					</button>
-					<button id="five-nt"
-							class="btn btn-primary btn-sm calculator-offset"
-							type="button">
-						5
-					</button>
-					<button id="six-nt"
-							class="btn btn-primary btn-sm calculator-offset"
-							type="button">
-						6
-					</button>
+			<div class="col-xs-3">
+				<div id="box-one">
+					<div class="row">
+						<div class="col-xs-12">
+							<button class="btn btn-primary btn-sm calculator-offset"
+									type="button"
+									value="1">
+								1
+							</button>
+							<button class="btn btn-primary btn-sm calculator-offset"
+									type="button"
+									value="2">
+								2
+							</button>
+							<button class="btn btn-primary btn-sm calculator-offset"
+									type="button"
+									value="3">
+								3
+							</button>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-12">
+							<button class="btn btn-primary btn-sm calculator-offset"
+									type="button"
+									value="4">
+								4
+							</button>
+							<button class="btn btn-primary btn-sm calculator-offset"
+									type="button"
+									value="5">
+								5
+							</button>
+							<button class="btn btn-primary btn-sm calculator-offset"
+									type="button"
+									value="6">
+								6
+							</button>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-12">
+							<button class="btn btn-primary btn-sm calculator-offset"
+									type="button"
+									value="7">
+								7
+							</button>
+							<button class="btn btn-primary btn-sm calculator-offset"
+									type="button"
+									value="8">
+								8
+							</button>
+							<button class="btn btn-primary btn-sm calculator-offset"
+									type="button"
+									value="9">
+								9
+							</button>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-12">
+							<button class="btn btn-primary btn-sm calculator-offset"
+									type="button"
+									value="0">
+								0
+							</button>
+						</div>
+					</div>
 				</div>
 			</div>
-			<div class="row">
-				<div class="col-xs-2">
-					<button id="seven-no"
-							class="btn btn-primary btn-sm calculator-offset"
-							type="button">
-						7
-					</button>
-					<button id="eight-no"
-							class="btn btn-primary btn-sm calculator-offset"
-							type="button">
-						8
-					</button>
-					<button id="nine-no"
-							class="btn btn-primary btn-sm calculator-offset"
-							type="button">
-						9
-					</button>
-				</div>
-				<div class="col-xs-2">
-					<button id="seven-nt"
-							class="btn btn-primary btn-sm calculator-offset"
-							type="button">
-						7
-					</button>
-					<button id="eight-nt"
-							class="btn btn-primary btn-sm calculator-offset"
-							type="button">
-						8
-					</button>
-					<button id="nine-nt"
-							class="btn btn-primary btn-sm calculator-offset"
-							type="button">
-						9
-					</button>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-xs-2">
-					<button id="zero-nt"
-							class="btn btn-primary btn-sm calculator-offset"
-							type="button">
-						0
-					</button>
-				</div>
-				<div class="col-xs-2">
-					<button id="zero-no"
-							class="btn btn-primary btn-sm calculator-offset"
-							type="button">
-						0
-					</button>
+			<div class="col-xs-3">
+				<div id="box-two">
+					<div class="row">
+						<div class="col-xs-12">
+							<button class="btn btn-primary btn-sm calculator-offset"
+									type="button"
+									value="1">
+								1
+							</button>
+							<button class="btn btn-primary btn-sm calculator-offset"
+									type="button"
+									value="2">
+								2
+							</button>
+							<button class="btn btn-primary btn-sm calculator-offset"
+									type="button"
+									value="3">
+								3
+							</button>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-12">
+							<button class="btn btn-primary btn-sm calculator-offset"
+									type="button"
+									value="4">
+								4
+							</button>
+							<button class="btn btn-primary btn-sm calculator-offset"
+									type="button"
+									value="5">
+								5
+							</button>
+							<button class="btn btn-primary btn-sm calculator-offset"
+									type="button"
+									value="6">
+								6
+							</button>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-12">
+							<button class="btn btn-primary btn-sm calculator-offset"
+									type="button"
+									value="7">
+								7
+							</button>
+							<button class="btn btn-primary btn-sm calculator-offset"
+									type="button"
+									value="8">
+								8
+							</button>
+							<button class="btn btn-primary btn-sm calculator-offset"
+									type="button"
+									value="9">
+								9
+							</button>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-12">
+							<button class="btn btn-primary btn-sm calculator-offset"
+									type="button"
+									value="0">
+								0
+							</button>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
