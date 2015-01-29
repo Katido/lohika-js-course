@@ -1,0 +1,8 @@
+.plusimageapply{
+	list-style-image:url(plus.png);
+	cursor:pointer;
+}
+.minusimageapply{
+	list-style-image:url(minus.png);
+	cursor:pointer;
+}
