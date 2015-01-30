@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Test modules</title>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />       
+        <link href="https://code.jquery.com/ui/1.11.2/themes/cupertino/jquery-ui.css" rel="stylesheet" media="all" />       
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.0.9/themes/default/style.min.css" rel="stylesheet" media="all" />       
+        <link href="d3.css" rel="stylesheet" media="all" />
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script type="text/javascript" src="https://code.jquery.com/ui/1.11.2/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.0.9/jstree.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js"></script>
+        <script type="text/javascript" src="all.js"></script>
+    </head>
+    <body onload="bindAll()">
+        <div id="accordion">
+            <h3>Jquery-UI menu tree</h3>
+                <div>
+                    <ul id="menu">
+                        <li>Element without icon</li>
+                        <li>
+                            Submenu
+                            <ul>
+                              <li style="width:350px;"><span class="ui-icon ui-icon-star"></span>Submenu item with ui-icon-star</li>
+                              <li style="width:350px;">Submenu item without icon</li>
+                            </ul>
+                        </li>
+                        <li><span class="ui-icon ui-icon-alert"></span>Element with ui-icon-alert</li>
+                        <li><span class="ui-icon ui-icon-help"></span>Element with ui-icon-help</li>
+                    </ul>
+                </div>
+            <h3>Jquery UI plugin tree</h3>
+                <div>
+                    <div id="treeplugin"></div>
+                </div>
+            <h3>D3js tree</h3>
+                <div>
+                    <div id="d3tree"></div>
+                </div>
+        </div>
+    </body>
+</html>
