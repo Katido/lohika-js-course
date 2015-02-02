@@ -1,0 +1,70 @@
+<html>
+ 
+ 
+ <head>
+    <script language="javascript" src="jquery-1.11.2.min.js" ></script>
+	<style>
+		 .menu_item {
+			width : 100%;
+			padding-left : 50px ;
+		 };
+	</style>
+	
+	<script language="javascript">
+		function  MyNode(oParent, text, level) {
+			this.level = level;
+					
+			this.insert_node = function(oParent, text, level ) {
+				var $item  = $("<div>" + text + "</div>")
+						         .addClass("menu_item") ;
+
+				if (level == 1)
+					$item.css( {"padding-left" : "0px"});
+					
+				var _this = this ;
+				$item.on('click', function(event){ _this.on_click(event, _this) });
+				
+				$(oParent).append( $item );
+			};
+
+			this.on_click = function(event, _this) {
+				oTarget = event.target ;
+
+				if ( $(oTarget).children().size() ) {
+					if( $(oTarget).children(':first').is(":visible") )
+						$(oTarget).children().hide();
+					else
+						$(oTarget).children().show();
+				}  else {
+					var sCapt = $(oTarget).text();
+					
+					_this.insert_node($(oTarget), "Sub " + sCapt, _this.level + 1);
+					_this.insert_node($(oTarget), "Sub " + sCapt, _this.level + 1);
+					_this.insert_node($(oTarget), "Sub " + sCapt, _this.level + 1);
+				}
+								
+				event.stopPropagation();
+			};
+		
+
+			this.insert_node (oParent, text, level) ;
+		};
+		
+	
+		
+		$( document ).ready(function() {
+		
+			new MyNode($( "#menu_container" ), "Root item 1", 1);
+			new MyNode($( "#menu_container" ), "Root item 2", 1);
+			new MyNode($( "#menu_container" ), "Root item 3", 1);
+		});
+		
+	</script>
+ </head>
+
+ 
+ <body>
+	<div id="menu_container"> </div>
+ </body>
+ 
+</html>
