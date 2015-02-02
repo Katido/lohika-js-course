@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Глюколятор</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />		
+		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet" media="all" />
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+		<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="calc.js"></script>
+	</head>
+	<body onload="bindAll()">
+		<table align='center'>
+			<tr>
+				<td colspan="4">
+				    <div class="input-group">
+						<input id="val" type="text" class="form-control" readonly="readonly" value="0">
+						<span class="input-group-btn">
+							<button id="clr" class="btn btn-danger" type="button">
+								<span class="glyphicon glyphicon-trash"></span>
+								CLR
+							</button>
+						</span>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td><a class="btn btn-info btn-block num">7</a></td>
+				<td><a class="btn btn-info btn-block num">8</a></td>
+				<td><a class="btn btn-info btn-block num">9</a></td>
+				<td><a class="btn btn-success btn-block op">/</a></td>
+			</tr>
+			<tr>
+				<td><a class="btn btn-info btn-block num">4</a></td>
+				<td><a class="btn btn-info btn-block num">5</a></td>
+				<td><a class="btn btn-info btn-block num">6</a></td>
+				<td><a class="btn btn-success btn-block op">*</a></td>
+			</tr>
+			<tr>
+				<td><a class="btn btn-info btn-block num">1</a></td>
+				<td><a class="btn btn-info btn-block num">2</a></td>
+				<td><a class="btn btn-info btn-block num">3</a></td>
+				<td><a class="btn btn-success btn-block op">-</a></td>
+			</tr>
+			<tr>
+				<td><a class="btn btn-info btn-block num">0</a></td>
+				<td><a class="btn btn-info btn-block num">.</a></td>
+				<td><a class="btn btn-success btn-block calc">=</a></td>
+				<td><a class="btn btn-success btn-block op">+</a></td>
+			</tr>
+		</table>
+	</body>
+</html>
