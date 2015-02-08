@@ -48,6 +48,11 @@ $(document).ready(function(){
                 min: "Your age must be equal or grater than 18"
             },
             agree: "Please accept our policy"
+        },
+        submitHandler: function(form) {
+            jQuery(form).ajaxSubmit({
+                target: "#result"
+            });
         }
     });
 
@@ -56,22 +61,24 @@ $(document).ready(function(){
     });
 
     $.mockjax({
-        url: "login.action",
+        url: "action.submit.form",
         response: function(settings) {
-            var user = settings.data.match(/user=(.+?)($|&)/)[1],
+            var username = settings.data.match(/username=(.+?)($|&)/)[1],
+                email = settings.data.match(/email=(.+?)($|&)/)[1];
+                age = settings.data.match(/age=(.+?)($|&)/)[1];
                 password = settings.data.match(/password=(.+?)($|&)/)[1];
-            if (password !== "foobar") {
-                this.responseText = "Your password is wrong (must be foobar).";
-                return;
-            }
-            this.responseText = "Hi " + user + ", welcome back.";
+            this.responseText = "<h4>Hi, you have submitted following data:</h4><br>" +
+            "<b>User:</b> " + username + "<br>" +
+            "<b>Email:</b> " + email + "<br>" +
+            "<b>Age:</b> " + age + "<br>" +
+            "<b>Password:</b> " + password;
         },
         responseStatus: 200,
-        responseTime: 500
+        responseTime: 1000
     });
 
     // show a simple loading indicator
-    var loader = jQuery('<div id="loader"><img src="../img/loading.gif" alt="loading..."></div>')
+    var loader = jQuery('<div id="loader"><img src="img/loading.gif" alt="loading..."></div>')
         .css({
             position: "relative",
             top: "1em",
@@ -88,15 +95,15 @@ $(document).ready(function(){
         throw e;
     });
 
-    var v = jQuery("#validatableForm").validate({
-        submitHandler: function(form) {
-            jQuery(form).ajaxSubmit({
-                target: "#result"
-            });
-        }
-    });
+    // var v = jQuery("#validatableForm").validate({
+    //     submitHandler: function(form) {
+    //         jQuery(form).ajaxSubmit({
+    //             target: "#result"
+    //         });
+    //     }
+    // });
 
-    jQuery("#reset").click(function() {
-        v.resetForm();
-    });
+    // jQuery("#reset").click(function() {
+    //     v.resetForm();
+    // });
 });

@@ -8,21 +8,19 @@
 
         <link rel="stylesheet" href="css/main.css">
 
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
-        <script src="js/main.js"></script>
-        <script src="js/vendor/jquery.form.js"></script>
+        <script src="js/vendor/jquery-1.10.2.min.js"></script>
         <script src="js/vendor/jquery.mockjax.js"></script>
+        <script src="js/vendor/jquery.form.js"></script>       
         <script src="js/vendor/jquery.validate.min.js"></script>
+        <script src="js/main.js"></script>
     </head>
     <body>
 
         <!-- Add your site or application content here -->
-        <h3>HTML Forms validation with jQuery plugin.</h3>
         <p>It's the homework N4 of lohika-js-course.</p>
         <br>
 
-        <form class="cmxform" id="validatableForm">
+        <form method="post" class="cmxform" id="validatableForm" action="action.submit.form">
             <fieldset>
                 <legend>Please provide your name, age, email address and a password</legend>
                 <p>
