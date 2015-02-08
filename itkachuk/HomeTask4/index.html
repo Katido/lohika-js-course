@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Form with validation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="css/main.css">
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
+        <script src="js/main.js"></script>
+        <script src="js/vendor/jquery.form.js"></script>
+        <script src="js/vendor/jquery.mockjax.js"></script>
+        <script src="js/vendor/jquery.validate.min.js"></script>
+    </head>
+    <body>
+
+        <!-- Add your site or application content here -->
+        <h3>HTML Forms validation with jQuery plugin.</h3>
+        <p>It's the homework N4 of lohika-js-course.</p>
+        <br>
+
+        <form class="cmxform" id="validatableForm">
+            <fieldset>
+                <legend>Please provide your name, age, email address and a password</legend>
+                <p>
+                    <label for="username">Name</label>
+                    <input id="username" name="username" type="text">
+                </p>
+                <p>
+                    <label for="email">E-Mail</label>
+                    <input id="email" name="email" type="email">
+                </p>
+                <p>
+                    <label for="password">Password</label>
+                    <input id="password" name="password" type="password">
+                </p>
+                <p>
+                    <label for="confirm_password">Confirm password</label>
+                    <input id="confirm_password" name="confirm_password" type="password">
+                </p>
+                <p>
+                    <label for="age">Age</label>
+                    <input id="age" name="age" type="text" required>
+                </p>
+                <p>
+                    <label for="agree">Please agree to our policy</label>
+                    <input type="checkbox" class="checkbox" id="agree" name="agree">
+                </p>
+                <p>
+                    <input class="submit" type="submit" value="Submit" disabled>
+                </p>
+            </fieldset>
+        </form>
+
+        <div id="result" class="warning">Please, fill the form!</div>
+    </body>
+</html>
