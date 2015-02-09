@@ -50,7 +50,7 @@ $(document).ready(function(){
             agree: "Please accept our policy"
         },
         submitHandler: function(form) {
-            jQuery(form).ajaxSubmit({
+            $(form).ajaxSubmit({
                 target: "#result"
             });
         }
@@ -67,7 +67,7 @@ $(document).ready(function(){
                 email = settings.data.match(/email=(.+?)($|&)/)[1];
                 age = settings.data.match(/age=(.+?)($|&)/)[1];
                 password = settings.data.match(/password=(.+?)($|&)/)[1];
-            this.responseText = "<h4>Hi, you have submitted following data:</h4><br>" +
+            this.responseText = "Hi, you have submitted following data:<br><br>" +
             "<b>User:</b> " + username + "<br>" +
             "<b>Email:</b> " + email + "<br>" +
             "<b>Age:</b> " + age + "<br>" +
@@ -78,7 +78,7 @@ $(document).ready(function(){
     });
 
     // show a simple loading indicator
-    var loader = jQuery('<div id="loader"><img src="img/loading.gif" alt="loading..."></div>')
+    var loader = $('<div id="loader"><img src="img/loading.gif" alt="loading..."></div>')
         .css({
             position: "relative",
             top: "1em",
@@ -87,7 +87,7 @@ $(document).ready(function(){
         })
         .appendTo("body")
         .hide();
-    jQuery().ajaxStart(function() {
+    $(document).ajaxStart(function() {
         loader.show();
     }).ajaxStop(function() {
         loader.hide();
@@ -95,15 +95,20 @@ $(document).ready(function(){
         throw e;
     });
 
-    // var v = jQuery("#validatableForm").validate({
-    //     submitHandler: function(form) {
-    //         jQuery(form).ajaxSubmit({
-    //             target: "#result"
-    //         });
-    //     }
-    // });
+    $("#reset").click(function() {
+        $("#validatableForm").resetForm();
+        $("#result").empty().append("Please, fill the form!");
+        $(".submit").attr("disabled", true);
+    });
 
-    // jQuery("#reset").click(function() {
-    //     v.resetForm();
-    // });
+    $("#defaults").click(function() {
+        var form = $("#validatableForm");
+        form.find("input[name=username]").val("Ivan");
+        form.find("input[name=email]").val("itkachuk@lohika.com");
+        form.find("input[name=password]").val("12345");
+        form.find("input[name=confirm_password]").val("12345");
+        form.find("input[name=age]").val("30");
+        form.find("input[name=agree]").prop('checked', true);
+        $(".submit").attr("disabled", false);
+    });
 });

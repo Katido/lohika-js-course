@@ -194,3 +194,12 @@ form.cmxform input.checkbox {
 form.cmxform input.submit {
     margin-left: 223px;
 }
+
+.warning {
+    margin-top: 20px;
+}
+
+.button {
+    margin-top: 10px;
+    width: 230px;
+}
