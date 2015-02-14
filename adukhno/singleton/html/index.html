@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset="UTF-8">
+	<script src="../js/module_one.js"></script>
+</head>
+<body>
+	<button onclick="alert('module is ' + module_one)">
+		module
+	</button>
+	<button onclick="alert('module flag is ' + module_one.flag())">
+		outer module flag
+	</button>
+	<button onclick="alert('inner module flag is ' 
+			+ (module_one.getInnerModule() === undefined
+					? 'undefined because inner module is not loaded'
+					: module_one.getInnerModule().flag()))">
+		inner module flag
+	</button>
+	<button onclick="module_one.loadInnerModule(); alert('inner module was loaded')">
+		load inner module
+	</button>
+</body>
+</html>
