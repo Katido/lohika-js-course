@@ -6,8 +6,8 @@ var courseModule = (function()
 {
     'use strict';
     function Course(name, subject){
-        this.name = name || "none";
-        this.subject = subject || "none";
+        this.name = name || "Language";
+        this.subject = subject|| new Array("English", "French", "German");
 
         this.setSubject = function(newSubject){
             this.subject = newSubject;
@@ -35,15 +35,16 @@ var courseModule = (function()
     }
 })();
 
-var courseSC = courseModule.createCourse("Computer Science", "Algorithms theory");
-var courseLang = courseModule.createCourse("Language", "English");
-
 jQuery(document).ready(function(){
 
-    $('#courseA').html(courseSC.getName());
-    $('#courseB').html(courseLang.getName());
-    $('#aSubject').html(courseSC.getSubject());
-    $('#bSubject').html(courseLang.getSubject());
+    var courseHistory = courseModule.createCourse("World History", new Array("Ancient times","Middle times"));
+
+    $('div').append('<ul class="root"></ul>');
+    $('ul.root').append('<li class="reveal">' + courseHistory.getName() + '</li>');
+    $('li.reveal').append('<ul class="subject"></ul>');
+    for(var i=0; i<courseHistory.getSubject().length; i++){
+        $('ul.subject').append('<li>' + courseHistory.getSubject()[i] + '</li>')
+    }
 
     $('.reveal').click(function() {
         $(this).children('ul').slideToggle();
