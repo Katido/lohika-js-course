@@ -13,8 +13,23 @@
         <span>-</span>
         <a href="#add">Add</a>
     </nav>
-    <div id="app"></div>
+    <div id="listUsers"></div>
+    <div id="addUser"></div>
 </div>
+
 <script data-main="js/main" src="js/require.js"></script>
+
+<script type="underscore/template" id="addUserTemplate">
+    <input id="user-name" /><button id="add">Add this user</button>
+</script>
+<script type="underscore/template" id="usersTemplate">
+        <ul>
+            <% for(var i=0;i< users.length;i++){ %>
+                <td>
+                    <%= users[i].name %>
+                </td>
+            <% } %>
+        </ul>
+</script>
 </body>
 </html>
