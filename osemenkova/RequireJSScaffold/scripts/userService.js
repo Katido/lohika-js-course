@@ -31,21 +31,15 @@ define(["jquery"], function($){
 
     function deleteUser(user){
         return $.ajax({
-            type:"POST",
-            dataType: "json",
-            contentType:"application/json",
-            url: "https://lohika-js-course.herokuapp.com/User",
-            data: JSON.stringify(user)
+            type:"DELETE",
+            url: "https://lohika-js-course.herokuapp.com/User" + '/' + user.id
         });
     }
 
     function editUser(user){
         return $.ajax({
-            type:"POST",
-            dataType: "json",
-            contentType:"application/json",
-            url: "https://lohika-js-course.herokuapp.com/User",
-            data: JSON.stringify(user)
+            type:"PUT",
+            url: "https://lohika-js-course.herokuapp.com/User" + '/' + user.id
         });
     }
 });
