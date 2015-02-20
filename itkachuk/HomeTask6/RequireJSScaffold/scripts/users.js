@@ -15,17 +15,26 @@ define(["jquery","underscore","userService"],function($,_, userService){
         });
     };
 
+    var clearUserForm = function clearUserForm(){
+        $("#firstName").val("");
+        $("#lastName").val("");
+        $("#login").val("");
+        $("#active").prop("checked", false);
+        $("#addUserForm").prop("userId", null);
+        $("#submitButton").html("Submit");
+    };
+
     return {
         init: function(){
             $("#addUser").bind("click",function(){
-                $("#addUserForm").toggle();
+                var addUserForm = $("#addUserForm");
+                addUserForm.toggle();
+                addUserForm.prop("userId", null);
+                $("#submitButton").html("Submit");
             });
 
-            $("#cancelForm").bind("click",function(){
-                $("#firstName").val("");
-                $("#lastName").val("");
-                $("#login").val("");
-                $("#active").prop("checked");
+            $("#cancelButton").bind("click",function(){
+                clearUserForm();
             });
 
             $("#addUserForm").submit(function(e){
@@ -35,15 +44,30 @@ define(["jquery","underscore","userService"],function($,_, userService){
                     login: $("#login").val(),
                     active: $("#active").prop("checked")
                 };
-                userService.add(user)
-                    .done(function(){
-                        alert("user was added");
-                        updateUsersList();
-                    })
-                    .fail(function(){
-                        alert("error: user wasn't added");
-                    });
-
+                if ($(this).prop("userId")) {
+                    user.id = $(this).prop("userId");
+                    userService.update(user)
+                        .done(function () {
+                            alert("user was updated");
+                            clearUserForm();
+                            updateUsersList();
+                            $("#addUserForm").hide();
+                        })
+                        .fail(function () {
+                            alert("error: user wasn't updated");
+                        });
+                } else {
+                    userService.add(user)
+                        .done(function () {
+                            alert("user was added");
+                            clearUserForm();
+                            updateUsersList();
+                            $("#addUserForm").hide();
+                        })
+                        .fail(function () {
+                            alert("error: user wasn't added");
+                        });
+                }
                 e.preventDefault();
             });
 
@@ -60,14 +84,16 @@ define(["jquery","underscore","userService"],function($,_, userService){
                         });
                 }
                 if (e.target.tagName === "BUTTON" && e.target.name === "update") {
-                    $("#addUserForm").show();
+                    var addUserForm = $("#addUserForm");
+                    addUserForm.show();
 
                     var editUser = _.findWhere(usersArray, {id: +e.target.id});
                     $("#firstName").val(editUser.firstName);
                     $("#lastName").val(editUser.lastName);
                     $("#login").val(editUser.login);
-                    $("#active").prop(editUser.active);
-
+                    $("#active").prop("checked", editUser.active);
+                    addUserForm.prop("userId", +e.target.id);
+                    $("#submitButton").html("Save");
                 }
             });
 

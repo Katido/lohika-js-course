@@ -5,6 +5,7 @@ define(["jquery"], function($){
 
     return {
         add : addUser,
+        update : updateUser,
         getAll : getAll,
         deleteUser : deleteUser
     };
@@ -24,6 +25,16 @@ define(["jquery"], function($){
             dataType: "json",
             contentType:"application/json",
             url: "https://lohika-js-course.herokuapp.com/User",
+            data: JSON.stringify(user)
+        });
+    }
+
+    function updateUser(user){
+        return $.ajax({
+            type:"PUT",
+            dataType: "json",
+            contentType:"application/json",
+            url: "https://lohika-js-course.herokuapp.com/User/" + user.id,
             data: JSON.stringify(user)
         });
     }
